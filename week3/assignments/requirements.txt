@@ -1,0 +1,8 @@
+# Requirements for CDB601220 Week 3 Assignment: Matplotlib & Seaborn
+pandas>=2.0.0
+numpy>=1.24.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+scipy>=1.10.0
+reportlab>=4.0.0
+pypdf>=3.0.0

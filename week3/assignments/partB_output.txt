@@ -1,0 +1,83 @@
+================================================================================
+PART B: LIE FACTOR AUDIT (COMPUTED IN PYTHON)
+================================================================================
+
+--- Question 1: Lie Factor Audit Table (Graphics A-E) ---
+
+Chart  Subject                        Data Effect        Graphic Effect       Lie Factor   Verdict
+---------------------------------------------------------------------------------------------------------
+A      Corporate tax rate             +0.0667 (+6.7%)    +5.0000 (+500.0%)    75.000       exaggerates 75.00x
+B      Federal health budget (Rs bn)  +0.5000 (+50.0%)   +1.2500 (+125.0%)    2.500        exaggerates 2.50x
+C      Export earnings ($ bn)         +0.2000 (+20.0%)   +0.2000 (+20.0%)     1.000        honest
+D      Air-pollution index            +0.5000 (+50.0%)   +0.1250 (+12.5%)     0.250        understates (0.25)
+E      City population (millions)     +3.0000 (+300.0%)  +15.0000 (+1500.0%)  5.000        exaggerates 5.00x
+---------------------------------------------------------------------------------------------------------
+
+--- Question 2: Audit of Honest vs. Distorted Graphics ---
+
+• Honest Graphic: Chart C (Export earnings) is the ONLY honest graphic (Lie Factor = 1.000).
+  Its bars originate from a true zero baseline, and ink length scales in strict 1:1 proportion
+  to the 20.0% data increase ($25B -> $30B, ink 5.0cm -> 6.0cm).
+
+• Distortions in the other four graphics:
+  - Chart A (Corporate tax rate, LF = 75.000): Severe truncation of the baseline. Bars are drawn
+    from a 29.6% baseline instead of zero, displaying only the tips. A modest 6.67% rate increase
+    (30% -> 32%) is depicted as a 500.0% ink explosion (4mm -> 24mm), exaggerating reality 75-fold.
+  - Chart B (Federal health budget, LF = 2.500): 2D area encoding of a 1D scalar. Sizing both
+    height and width of a coin icon by 1.5x for a 50% budget increase (Rs 40B -> 60B) squares the visual
+    surface area (1.5^2 = 2.25x ink, +125% graphic effect), exaggerating the increase 2.5 times.
+  - Chart D (Air-pollution index, LF = 0.250): Compressed baseline / downward offset. A 50.0% rise
+    in air pollution (100 -> 150) is encoded as only a 12.5% bar height increase (8.0cm -> 9.0cm),
+    understating the pollution surge by a factor of 4 (LF = 0.25).
+  - Chart E (City population, LF = 5.000): Bubble radius scaling. Encoding a 300.0% population
+    growth (2M -> 8M, a 4x factor) by scaling bubble RADIUS 4x results in area scaling by 4^2 = 16x
+    (+1500.0% ink area), exaggerating growth 5-fold.
+
+--- Question 3: Dimensionality of Ink (ink_dimension=2) ---
+
+• Graphics requiring ink_dimension=2: Chart B (coin icon) and Chart E (bubble graphic).
+  Both represent data magnitudes using two-dimensional visual surface area rather than a 1D line/bar length.
+
+• What goes wrong if left at ink_dimension=1:
+  If ink_dimension is left at 1, the formula incorrectly assumes the reader's eye perceives only the 1D linear
+  dimension (diameter or radius) rather than the 2D surface area (ink ~ r^2); for Chart B this would falsely
+  report an honest Lie Factor of 1.00 (ignoring the 2.25x area expansion), and for Chart E it would report
+  a Lie Factor of 1.00 instead of the true 5.00x visual area distortion.
+
+--- Question 4: Understated Lie Factor (LF < 1) ---
+
+• Why an understated chart is still a distortion:
+  Visual integrity requires faithful proportionality in both directions; understating a magnitude
+  lulls the viewer into false complacency by suppressing the true scale of growth, creating a visual
+  perception that change is minor when it is substantial.
+
+• Who benefits:
+  Polluting industries, municipal regulators, or environmental agencies benefit from Chart D because
+  understating a severe 50% spike in hazardous smog (100 -> 150 AQI) as an almost imperceptible bump (8cm -> 9cm)
+  minimizes public outcry, evades regulatory scrutiny, and shields polluters from liability.
+
+--- Question 5: Chart F (Dual-Axis Chart) Audit & Reality ---
+
+• Can we compute Lie Factor for Chart F? No, Lie Factor is mathematically undefined for this chart.
+  Tufte's Lie Factor formula strictly assumes a single physical coordinate system mapping a univariate
+  quantity to ink length or area relative to a fixed baseline.
+  In Chart F, two independent y-axes with mismatched scales and offsets (revenue 50-80 PKR M, cost 40-56 PKR M)
+  are superimposed. The apparent physical distance between the two lines and their intersection point are
+  purely arbitrary artifacts of how the designer tuned the two axis limits.
+  If one attempts to evaluate the difference (Profit = Revenue - Cost):
+  In January, the real data difference is POSITIVE (+8M PKR), but on the graphic the cost line is drawn
+  visually ABOVE revenue (a negative visual difference). A positive real effect mapped to a negative visual effect
+  yields an absurd negative Lie Factor that breaks the ratio metric.
+
+• What the data actually shows:
+  ShaheenGo was NEVER running at a loss. It was solidly profitable in EVERY single month:
+
+    - Jan: Revenue = 52M PKR, Cost = 44M PKR -> Profit = +8M PKR
+    - Feb: Revenue = 58M PKR, Cost = 46M PKR -> Profit = +12M PKR
+    - Mar: Revenue = 61M PKR, Cost = 47M PKR -> Profit = +14M PKR
+    - Apr: Revenue = 66M PKR, Cost = 49M PKR -> Profit = +17M PKR
+    - May: Revenue = 71M PKR, Cost = 51M PKR -> Profit = +20M PKR
+    - Jun: Revenue = 78M PKR, Cost = 53M PKR -> Profit = +25M PKR
+  Profits expanded continuously from +8M PKR in Jan to +25M PKR in June.
+  The claim that 'ShaheenGo ran at a loss until May' is a total fabrication engineered by dual-axis manipulation.
+================================================================================
